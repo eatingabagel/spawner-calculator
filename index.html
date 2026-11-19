@@ -69,6 +69,42 @@
   .note { margin:12px 2px 0; color:#747d8b; font-size:12px; }
   .bottom { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-top:14px; }
   .bottom span { color:var(--muted); font-size:12px; }
+  /* Theme presets */
+  body[data-theme="forest"] { --text:#e6f2e8;--muted:#9bb5a2;--line:#294436;--paper:#14251b;--page:#07120b;--head:#1b3324;--btn-hover:#294633;--input:#0e1c13;--input-ro:#17271b;--detail:#102016;--focus:#8ac69b;--accent:#a8d5b4; }
+  body[data-theme="forest"] { background:radial-gradient(ellipse at 50% -10%,#1c3b28 0,#07120b 48%); }
+  body[data-theme="forest"] header { background:linear-gradient(115deg,#173321,#0d1e13 60%,#183424);border-color:#294436; }
+  body[data-theme="forest"] .stat,body[data-theme="forest"] .table-wrap { background:linear-gradient(145deg,#14251b,#102016);border-color:#294436; }
+  body[data-theme="forest"] th,body[data-theme="forest"] .tabs { background:#1b3324; }
+  body[data-theme="forest"] button { background:#1b3324;border-color:#31543a; }
+  body[data-theme="nether"] { --text:#ffe9df;--muted:#c49a8a;--line:#5b2b24;--paper:#2b1715;--page:#130807;--head:#3a1d18;--btn-hover:#512720;--input:#1d100e;--input-ro:#2b1715;--detail:#1c100e;--focus:#e28a5e;--accent:#ffb17e; }
+  body[data-theme="nether"] { background:radial-gradient(ellipse at 50% -10%,#552319 0,#130807 50%); }
+  body[data-theme="nether"] header { background:linear-gradient(115deg,#3a1d18,#1d100e 60%,#42201a);border-color:#5b2b24; }
+  body[data-theme="nether"] .stat,body[data-theme="nether"] .table-wrap { background:linear-gradient(145deg,#2b1715,#1d100e);border-color:#5b2b24; }
+  body[data-theme="nether"] th,body[data-theme="nether"] .tabs { background:#3a1d18; }
+  body[data-theme="nether"] button { background:#3a1d18;border-color:#69352b; }
+  body[data-theme="ocean"] { --text:#e4f4ff;--muted:#91b5c9;--line:#24475a;--paper:#13232d;--page:#07121a;--head:#1a3040;--btn-hover:#27475b;--input:#0d1b24;--input-ro:#172b38;--detail:#10212b;--focus:#7dbce0;--accent:#a9d9f4; }
+  body[data-theme="ocean"] { background:radial-gradient(ellipse at 50% -10%,#1b3d53 0,#07121a 48%); }
+  body[data-theme="ocean"] header { background:linear-gradient(115deg,#1a3040,#0d1b24 60%,#1a3040);border-color:#24475a; }
+  body[data-theme="ocean"] .stat,body[data-theme="ocean"] .table-wrap { background:linear-gradient(145deg,#13232d,#10212b);border-color:#24475a; }
+  body[data-theme="ocean"] th,body[data-theme="ocean"] .tabs { background:#1a3040; }
+  body[data-theme="ocean"] button { background:#1a3040;border-color:#31546a; }
+  body[data-theme="light"] { color-scheme:light;--text:#20242b;--muted:#68717d;--line:#d8dde4;--paper:#ffffff;--page:#f3f5f8;--head:#e8edf3;--btn-hover:#e2e7ee;--input:#fff;--input-ro:#f0f2f5;--detail:#f7f9fb;--focus:#5a789e;--accent:#526d8c;--tint:12%;--tint-hover:20%; }
+  body[data-theme="light"] { background:#f3f5f8; }
+  body[data-theme="light"] header { background:linear-gradient(115deg,#e9edf3,#f7f8fa 60%,#e7edf4);border-color:#d8dde4; }
+  body[data-theme="light"] .stat,body[data-theme="light"] .table-wrap { background:#fff;border-color:#d8dde4;box-shadow:0 5px 18px #0000000a; }
+  body[data-theme="light"] th,body[data-theme="light"] .tabs { background:#e8edf3; }
+  body[data-theme="light"] button { background:#eef1f5;border-color:#cbd2dc; }
+  body[data-theme="light"] .tab[aria-selected="true"] { color:#20242b;background:#d4dce6; }
+  body[data-theme="light"] tr.main td { background:color-mix(in srgb,var(--c,transparent) var(--tint),#fff); }
+  body[data-theme="light"] tr.main:hover td { background:color-mix(in srgb,var(--c,transparent) var(--tint-hover),#fff); }
+  body[data-theme="light"] tfoot td { background:#e8edf3; }
+  body[data-theme="light"] .mob-img,body[data-theme="light"] .mob-fallback { background:#f2f4f7;border-color:#cbd2dc; }
+  body[data-theme="light"] input.name-input:hover,body[data-theme="light"] input.name-input:focus { background:#f7f9fb; }
+  body[data-theme="light"] input:focus { background:#fff; }
+  .preferences { display:flex;align-items:center;gap:7px;flex-wrap:wrap; }
+  .preferences label { color:var(--muted);font-size:12px; }
+  select { border:1px solid #303744;border-radius:7px;padding:8px 10px;background:var(--input);color:var(--text);font:inherit; }
+  #import-file { display:none; }
   @media(max-width:700px) { .overview{grid-template-columns:1fr;gap:8px}.stat{padding:12px 14px}.stat-value{font-size:18px} main{margin-top:18px;padding:0 12px 32px} header{padding:18px 14px} .tabs{width:100%}.tab{flex:1} }
 
 </style>
@@ -95,6 +131,8 @@
       <div class="actions">
         <button id="dev" type="button" aria-pressed="false">Dev Mode: Off</button>
         <button id="add" type="button">＋ Add spawner</button>
+        <div class="preferences"><label for="theme">Theme</label><select id="theme" aria-label="Choose theme"><option value="default">Obsidian</option><option value="forest">Forest</option><option value="nether">Nether</option><option value="ocean">Ocean</option><option value="light">Light</option></select></div>
+        <button id="export-json" type="button">↓ Export inputs</button><button id="import-json" type="button">↑ Import inputs</button><input id="import-file" type="file" accept=".json,application/json">
         <button id="export" type="button">↓ Export HTML</button>
       </div>
     </div>
@@ -170,7 +208,10 @@
     {name:"Creeper",min:10,max:40,cost:67000,amount:2.5,dropPrice:3,color:"#bcffb8",owned: 0}
   ];
   /*DEFAULTS_END*/
-  const key = "simpleSpawnerProfitSheetV2", devKey = "spawnerDevMode", tabKey = "spawnerTab";
+  const key = "simpleSpawnerProfitSheetV2", devKey = "spawnerDevMode", tabKey = "spawnerTab", themeKey = "spawnerTheme";
+  const themes = ["default","forest","nether","ocean","light"];
+  function setTheme(theme) { if (!themes.includes(theme)) theme="default"; document.body.dataset.theme=theme; document.getElementById("theme").value=theme; try { localStorage.setItem(themeKey,theme); } catch {} }
+  let selectedTheme="default"; try { selectedTheme=localStorage.getItem(themeKey)||"default"; } catch {}
   const fallbackColor = "#9aa0a6";
   const fresh = () => defaults.map(x => ({...x,owned:x.owned ?? 0}));
   let data = fresh();
@@ -364,6 +405,22 @@
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a"); a.href = url; a.download = "spawner-profit-calculator.html"; a.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
+  setTheme(selectedTheme);
+  document.getElementById("theme").addEventListener("change", e => setTheme(e.target.value));
+  document.getElementById("export-json").addEventListener("click", () => {
+    const blob=new Blob([JSON.stringify({version:1,spawners:data},null,2)],{type:"application/json"});
+    const url=URL.createObjectURL(blob); const a=document.createElement("a"); a.href=url; a.download="spawner-calculator-inputs.json"; a.click(); setTimeout(()=>URL.revokeObjectURL(url),1000);
+  });
+  const importInput=document.getElementById("import-file"); document.getElementById("import-json").addEventListener("click",()=>importInput.click());
+  importInput.addEventListener("change",async()=>{
+    const file=importInput.files?.[0]; if(!file)return;
+    try { const parsed=JSON.parse(await file.text()); const imported=Array.isArray(parsed)?parsed:parsed.spawners;
+      if(!Array.isArray(imported)||!imported.length||imported.some(s=>!s||typeof s.name!=="string"))throw new Error("invalid");
+      data=imported.map(s=>({...s,owned:Math.max(0,Math.floor(Number(s.owned)||0)),min:Math.max(0,Number(s.min)||0),max:Math.max(0,Number(s.max)||0),cost:Math.max(0,Number(s.cost)||0),amount:Math.max(0,Number(s.amount)||0),dropPrice:Math.max(0,Number(s.dropPrice)||0),color:/^#[0-9a-f]{6}$/i.test(s.color||"")?s.color:fallbackColor}));
+      save();render();alert("Inputs imported successfully.");
+    } catch { alert("Could not import this file. Please select a valid calculator JSON export."); }
+    importInput.value="";
   });
   render();
   let startTab = "sheet";
